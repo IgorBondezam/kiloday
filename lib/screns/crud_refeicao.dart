@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kiloday/components/dropdown_menu.dart';
+import 'package:kiloday/components/dropdown_menu_add_item.dart';
 import 'package:kiloday/components/expanded_listagem_title_subtitle.dart';
 import 'package:kiloday/model/alimento.dart';
 import 'package:kiloday/model/refeicao.dart';
@@ -24,7 +24,7 @@ class _CrudRefeicaoState extends State<CrudRefeicao> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Padding(padding: EdgeInsets.all(16.0)),
         SizedBox(
@@ -39,8 +39,8 @@ class _CrudRefeicaoState extends State<CrudRefeicao> {
           ),
         ),
         const Padding(padding: EdgeInsets.all(8.0)),
-        DropdownMenuList(items: widget.alimentos, itemsAdicionados: widget.alimentosSelecionados),
-
+        DropdownMenuListAddItem(items: widget.alimentos, itemsAdicionados: widget.alimentosSelecionados),
+        const Padding(padding: EdgeInsets.all(16.0)),
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.lightGreen),
           onPressed: () {

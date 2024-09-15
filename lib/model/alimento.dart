@@ -1,7 +1,6 @@
-import 'package:kiloday/model/interfaces/dropdown_item.dart';
-import 'package:kiloday/model/interfaces/list_item.dart';
+import 'package:kiloday/model/interfaces/dropdown_list_item.dart';
 
-class Alimento implements ListItem, DropdownItem {
+class Alimento implements DropdownListItem {
 
   String nome;
   double calorias;

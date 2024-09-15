@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:intl/intl.dart';
 import 'package:kiloday/model/alimento.dart';
 
