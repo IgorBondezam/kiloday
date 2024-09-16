@@ -23,9 +23,7 @@ class _LoginState extends State<Login> {
           Text(
             'KiloDay',
             style: TextStyle(
-                color: MyApp.green,
-                fontSize: 75,
-                fontWeight: FontWeight.w700),
+                color: MyApp.green, fontSize: 75, fontWeight: FontWeight.w700),
           ),
           const Padding(padding: EdgeInsets.all(48.0)),
           SizedBox(
@@ -51,7 +49,9 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          const Padding(padding: EdgeInsets.all(16.0)),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+          ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
             onPressed: () {
@@ -59,13 +59,13 @@ class _LoginState extends State<Login> {
                   widget.loginController.text, widget.passwordController.text);
               if (user.loginValid()) {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Home(
-                              user: user,
-                            )));
-                print(widget.loginController.text);
-                print(widget.passwordController.text);
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(
+                      user: user,
+                    ),
+                  ),
+                );
               }
             },
             child: const Text(
