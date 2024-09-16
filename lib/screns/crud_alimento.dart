@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiloday/components/expanded_listagem_title_subtitle.dart';
+import 'package:kiloday/main.dart';
 import 'package:kiloday/model/alimento.dart';
 
 class CrudAlimento extends StatefulWidget {
@@ -70,7 +71,7 @@ class _CrudAlimentoState extends State<CrudAlimento> {
         ),
         const Padding(padding: EdgeInsets.all(16.0)),
         ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.lightGreen),
+          style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
           onPressed: () {
             setState(() {
               Alimento alimento = Alimento(

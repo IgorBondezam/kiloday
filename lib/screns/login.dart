@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiloday/main.dart';
 import 'package:kiloday/model/user.dart';
 import 'package:kiloday/screns/home.dart';
 
@@ -19,10 +20,10 @@ class _LoginState extends State<Login> {
       appBar: AppBar(),
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text(
+          Text(
             'KiloDay',
             style: TextStyle(
-                color: Colors.lightGreen,
+                color: MyApp.green,
                 fontSize: 75,
                 fontWeight: FontWeight.w700),
           ),
@@ -52,7 +53,7 @@ class _LoginState extends State<Login> {
           ),
           const Padding(padding: EdgeInsets.all(16.0)),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.lightGreen),
+            style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
             onPressed: () {
               User user = User(
                   widget.loginController.text, widget.passwordController.text);

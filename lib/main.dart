@@ -8,12 +8,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  static Color green = Colors.green;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          color: Colors.lightGreenAccent
+        appBarTheme: AppBarTheme(
+          centerTitle: true,
+          color: MyApp.green,
+          titleTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 30),
         ),
       ),
       home: Login(),

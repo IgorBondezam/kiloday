@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiloday/components/expanded_listagem_title_subtitle.dart';
+import 'package:kiloday/main.dart';
 import 'package:kiloday/model/alimento.dart';
 import 'package:kiloday/model/user.dart';
 import 'package:kiloday/screns/crud_alimento.dart';
@@ -75,11 +76,19 @@ class _HomeState extends State<Home> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.lightGreen,
+                color: MyApp.green,
               ),
-              child: Text('Menu'),
+              child: const Center(
+                child: Text(
+                  'KiloDay',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 30),
+                ),
+              ),
             ),
             ListTile(
               title: const Text('Home'),

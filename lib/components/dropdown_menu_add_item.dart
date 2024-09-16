@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiloday/components/expanded_listagem_remove_item.dart';
+import 'package:kiloday/main.dart';
 import 'package:kiloday/model/interfaces/dropdown_list_item.dart';
 
 class DropdownMenuListAddItem extends StatefulWidget {
@@ -50,7 +51,7 @@ class _DropdownMenuListAddItemState extends State<DropdownMenuListAddItem> {
             const Padding(padding: EdgeInsets.all(8.0)),
             ElevatedButton(
               style:
-              ElevatedButton.styleFrom(backgroundColor: Colors.lightGreen),
+              ElevatedButton.styleFrom(backgroundColor: MyApp.green),
               onPressed: () {
                 if (selecionado != null) {
                   setState(() {
@@ -58,13 +59,13 @@ class _DropdownMenuListAddItemState extends State<DropdownMenuListAddItem> {
                   });
                 }
               },
-              child: const Icon(Icons.add),
+              child: const Icon(Icons.add, color: Colors.white,),
             ),
           ],
         ),
         SizedBox(
             height: 200,
-            width: 600,
+            width: 500,
             child: Card(
               child: ExpandedListagem_remove_item(
                 listagem: widget.itemsAdicionados, width: 300, ),

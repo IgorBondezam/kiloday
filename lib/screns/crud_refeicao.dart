@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiloday/components/dropdown_menu_add_item.dart';
 import 'package:kiloday/components/expanded_listagem_title_subtitle.dart';
+import 'package:kiloday/main.dart';
 import 'package:kiloday/model/alimento.dart';
 import 'package:kiloday/model/refeicao.dart';
 
@@ -42,7 +43,7 @@ class _CrudRefeicaoState extends State<CrudRefeicao> {
         DropdownMenuListAddItem(items: widget.alimentos, itemsAdicionados: widget.alimentosSelecionados),
         const Padding(padding: EdgeInsets.all(16.0)),
         ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.lightGreen),
+          style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
           onPressed: () {
             setState(() {
               Refeicao refeicao = Refeicao(widget.nomeController.text, DateTime.now());
