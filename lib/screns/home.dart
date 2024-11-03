@@ -5,6 +5,8 @@ import 'package:kiloday/model/alimento.dart';
 import 'package:kiloday/model/user.dart';
 import 'package:kiloday/screns/crud_alimento.dart';
 import 'package:kiloday/screns/crud_refeicao.dart';
+import 'package:kiloday/service/refeicao_service.dart';
+import 'package:kiloday/service/user_service.dart';
 
 class Home extends StatefulWidget {
   Home({super.key, required this.user});
@@ -19,6 +21,29 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<String> steps = ['Home', 'Refeições', 'Alimentos'];
+
+  UserService userService = UserService();
+  RefeicaoService refeicaoService = RefeicaoService();
+
+  @override
+  void initState() {
+    initializeData();
+    super.initState();
+  }
+
+  Future<void> initializeData() async {
+    await getUser();
+    await getRefeicao();
+    setState(() {});
+  }
+
+  Future<void> getUser() async {
+    widget.user = await userService.findById(1);
+  }
+
+  Future<void> getRefeicao() async {
+    widget.user.refeicoes = await refeicaoService.findAll();
+  }
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle =

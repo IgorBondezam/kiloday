@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kiloday/components/expanded_listagem_title_subtitle.dart';
 import 'package:kiloday/main.dart';
 import 'package:kiloday/model/alimento.dart';
+import 'package:kiloday/service/alimento_service.dart';
 
 class CrudAlimento extends StatefulWidget {
   CrudAlimento(this.alimentos, {super.key});
@@ -19,6 +20,19 @@ class CrudAlimento extends StatefulWidget {
 }
 
 class _CrudAlimentoState extends State<CrudAlimento> {
+  AlimentoService service = AlimentoService();
+
+  @override
+  void initState() {
+    getAlimentos();
+    super.initState();
+  }
+
+  Future<void> getAlimentos() async {
+    widget.alimentos = await service.findAll();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -74,10 +88,11 @@ class _CrudAlimentoState extends State<CrudAlimento> {
           style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
           onPressed: () {
             setState(() {
-              Alimento alimento = Alimento(
+              Alimento alimento = Alimento(1,
                   widget.nomeController.text, double.parse(widget.caloriasController.text),
                   double.parse(widget.proteinasController.text), double.parse(widget.quantidadeController.text));
-              widget.alimentos.add(alimento);
+              service.save(alimento.toJson());
+              getAlimentos();
             });
           },
           child: const Text(

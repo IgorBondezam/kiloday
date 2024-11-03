@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiloday/model/interfaces/list_item.dart';
+import 'package:kiloday/service/alimento_service.dart';
 
 class ExpandedListagem_remove_item extends StatefulWidget {
   ExpandedListagem_remove_item({required this.listagem, this.heigth=50, this.width=100, super.key});

@@ -1,0 +1,57 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "email": "igor@gmail.com",
+      "password": "1234567",
+      "refeicoes": [
+        {
+          "id": "1",
+          "nome": "Almoço",
+          "horarioRefeicao": "2024-01-01",
+          "alimentos": [
+            {
+              "id": "1",
+              "nome": "Picanha",
+              "calorias": 180,
+              "proteinas": 400,
+              "quantidade": 200
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "refeicao": [
+    {
+      "id": "1",
+      "nome": "Almoço",
+      "horarioRefeicao": "2024-01-01",
+      "alimentos": [
+        {
+          "id": "1",
+          "nome": "Picanha",
+          "calorias": 180,
+          "proteinas": 400,
+          "quantidade": 200
+        }
+      ]
+    }
+  ],
+  "alimento": [
+    {
+      "id": "1",
+      "nome": "Picanha",
+      "calorias": 180,
+      "proteinas": 400,
+      "quantidade": 200
+    },
+    {
+      "id": "2",
+      "nome": "a",
+      "calorias": 2,
+      "proteinas": 3,
+      "quantidade": 4
+    }
+  ]
+}

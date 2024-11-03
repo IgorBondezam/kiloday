@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kiloday/components/expanded_listagem_remove_item.dart';
 import 'package:kiloday/main.dart';
 import 'package:kiloday/model/interfaces/dropdown_list_item.dart';
+import 'package:kiloday/service/alimento_service.dart';
 
 class DropdownMenuListAddItem extends StatefulWidget {
   DropdownMenuListAddItem(
@@ -27,7 +28,20 @@ class DropdownMenuListAddItem extends StatefulWidget {
 }
 
 class _DropdownMenuListAddItemState extends State<DropdownMenuListAddItem> {
-  DropdownListItem? selecionado; // Declare it outside of build
+  DropdownListItem? selecionado;
+
+  AlimentoService service = AlimentoService();
+
+  @override
+  void initState() {
+    getAlimentos();
+    super.initState();
+  }
+
+  Future<void> getAlimentos() async {
+    widget.items = await service.findAll();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +58,7 @@ class _DropdownMenuListAddItemState extends State<DropdownMenuListAddItem> {
               value: selecionado,
               onChanged: (DropdownListItem? value) {
                 setState(() {
-                  selecionado = value; // No need to force unwrap (!)
+                  selecionado = value;
                 });
               },
             ),
@@ -68,8 +82,10 @@ class _DropdownMenuListAddItemState extends State<DropdownMenuListAddItem> {
             width: 500,
             child: Card(
               child: ExpandedListagem_remove_item(
-                listagem: widget.itemsAdicionados, width: 300, ),
-            )),
+                listagem: widget.itemsAdicionados, width: 300,
+              ),
+            )
+        ),
       ],
     );
   }

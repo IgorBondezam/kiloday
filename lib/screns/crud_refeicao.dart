@@ -46,7 +46,7 @@ class _CrudRefeicaoState extends State<CrudRefeicao> {
           style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
           onPressed: () {
             setState(() {
-              Refeicao refeicao = Refeicao(widget.nomeController.text, DateTime.now());
+              Refeicao refeicao = Refeicao(1, widget.nomeController.text, DateTime.now());
               refeicao.alimentos = widget.alimentosSelecionados;
               widget.refeicoes.add(refeicao);
               widget.alimentosSelecionados = [];

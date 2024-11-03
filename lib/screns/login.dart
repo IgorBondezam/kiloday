@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
             onPressed: () {
-              User user = User(
+              User user = User(1,
                   widget.loginController.text, widget.passwordController.text);
               if (user.loginValid()) {
                 Navigator.push(
