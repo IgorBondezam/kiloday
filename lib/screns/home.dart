@@ -7,6 +7,8 @@ import 'package:kiloday/screns/crud_alimento.dart';
 import 'package:kiloday/screns/crud_refeicao.dart';
 import 'package:kiloday/service/refeicao_service.dart';
 import 'package:kiloday/service/user_service.dart';
+import 'package:http/http.dart' as http;
+
 
 class Home extends StatefulWidget {
   Home({super.key, required this.user});
@@ -22,8 +24,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<String> steps = ['Home', 'Refeições', 'Alimentos'];
 
-  UserService userService = UserService();
-  RefeicaoService refeicaoService = RefeicaoService();
+  UserService userService = UserService(http.Client());
+  RefeicaoService refeicaoService = RefeicaoService(http.Client());
 
   @override
   void initState() {

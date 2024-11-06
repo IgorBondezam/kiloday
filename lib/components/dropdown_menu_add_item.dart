@@ -3,6 +3,7 @@ import 'package:kiloday/components/expanded_listagem_remove_item.dart';
 import 'package:kiloday/main.dart';
 import 'package:kiloday/model/interfaces/dropdown_list_item.dart';
 import 'package:kiloday/service/alimento_service.dart';
+import 'package:http/http.dart' as http;
 
 class DropdownMenuListAddItem extends StatefulWidget {
   DropdownMenuListAddItem(
@@ -30,7 +31,7 @@ class DropdownMenuListAddItem extends StatefulWidget {
 class _DropdownMenuListAddItemState extends State<DropdownMenuListAddItem> {
   DropdownListItem? selecionado;
 
-  AlimentoService service = AlimentoService();
+  AlimentoService service = AlimentoService(http.Client());
 
   @override
   void initState() {

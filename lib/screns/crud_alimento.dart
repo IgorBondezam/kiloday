@@ -4,6 +4,7 @@ import 'package:kiloday/components/expanded_listagem_title_subtitle.dart';
 import 'package:kiloday/main.dart';
 import 'package:kiloday/model/alimento.dart';
 import 'package:kiloday/service/alimento_service.dart';
+import 'package:http/http.dart' as http;
 
 class CrudAlimento extends StatefulWidget {
   CrudAlimento(this.alimentos, {super.key});
@@ -20,7 +21,7 @@ class CrudAlimento extends StatefulWidget {
 }
 
 class _CrudAlimentoState extends State<CrudAlimento> {
-  AlimentoService service = AlimentoService();
+  AlimentoService service = AlimentoService(http.Client());
 
   @override
   void initState() {

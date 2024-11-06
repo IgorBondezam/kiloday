@@ -2,6 +2,9 @@ import 'package:kiloday/model/user.dart';
 import 'package:kiloday/service/abstract_crud_service.dart';
 
 class UserService extends AbstractCrudService<User> {
+
+  UserService(super.client);
+
   @override
   String getComplemento() {
     return "user";
