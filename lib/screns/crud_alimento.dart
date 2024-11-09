@@ -110,7 +110,18 @@ class _CrudAlimentoState extends State<CrudAlimento> {
             ),
           ),
         ),
-        ExpandedListagemTitleSubtitle(listagem: widget.alimentos)
+        Expanded(
+          child: ListView.builder(
+              itemCount: widget.alimentos.length,
+              itemBuilder: (context, index) {
+                return ExpandedCardTitleSubtitle(
+                    item: widget.alimentos[index],
+                    onDelete: () async {
+                      await service.delete(widget.alimentos[index].id);
+                      getAlimentos();
+                    });
+              }),
+        ),
       ],
     );
   }

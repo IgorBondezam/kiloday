@@ -88,7 +88,7 @@ class _CrudRefeicaoState extends State<CrudRefeicao> {
                 refeicao, widget.alimentosSelecionados);
             service.save(refeicao.toJson());
             widget.user.refeicoes.add(refeicao);
-            userService.save(widget.user.toJson());
+            userService.update(widget.user.id, widget.user.toJson());
             widget.alimentosSelecionados = [];
             getRefeicoes();
           },
@@ -100,7 +100,21 @@ class _CrudRefeicaoState extends State<CrudRefeicao> {
             ),
           ),
         ),
-        ExpandedListagemTitleSubtitle(listagem: widget.refeicoes),
+        Expanded(
+          child: ListView.builder(
+              itemCount: widget.refeicoes.length,
+              itemBuilder: (context, index) {
+                return ExpandedCardTitleSubtitle(
+                  item: widget.refeicoes[index],
+                  onDelete: () async {
+                      await service.delete(widget.refeicoes[index].id);
+                      getRefeicoes();
+                      widget.user.refeicoes.removeWhere((u) => u.id == widget.refeicoes[index].id);
+                      userService.update(widget.user.id, widget.user.toJson());
+                  },
+                );
+              }),
+        ),
       ],
     );
   }

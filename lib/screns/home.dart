@@ -114,8 +114,14 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  ExpandedListagemTitleSubtitle(
-                    listagem: widget.user.refeicoes,
+                  Expanded(
+                    child: ListView.builder(
+                        itemCount: widget.user.refeicoes.length,
+                        itemBuilder: (context, index) {
+                          return ExpandedCardTitleSubtitle(
+                            item: widget.user.refeicoes[index],
+                          );
+                        }),
                   ),
                 ],
               ),

@@ -44,7 +44,7 @@ abstract class AbstractCrudService<T> {
     }
   }
 
-  Future<void> update(String id, T body) async {
+  Future<void> update(String id, Map<String, dynamic> body) async {
     http.Response response = await client.put(
         (Uri.parse('$url/${getComplemento()}/$id')),
         body: jsonEncode(body));
@@ -56,7 +56,7 @@ abstract class AbstractCrudService<T> {
   Future<void> delete(String id) async {
     http.Response response =
         await client.delete((Uri.parse('$url/${getComplemento()}/$id')));
-    if (response.statusCode != 204) {
+    if (response.statusCode != 200) {
       throw Exception('Erro ao Deletar');
     }
   }

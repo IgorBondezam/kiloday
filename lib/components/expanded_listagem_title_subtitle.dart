@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:kiloday/model/interfaces/list_item.dart';
 
-class ExpandedListagemTitleSubtitle extends StatelessWidget {
-  ExpandedListagemTitleSubtitle({required this.listagem, super.key});
+class ExpandedCardTitleSubtitle extends StatelessWidget {
+  ExpandedCardTitleSubtitle(
+      {required this.item, this.onDelete, super.key});
 
-  List<ListItem> listagem;
+  ListItem item;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: listagem.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              title: Text(listagem[index].getTitle()),
-              subtitle: Text(listagem[index].getSubTitle()),
-            ),
-          );
-        },
+    return Card(
+      child: ListTile(
+        title: Text(item.getTitle()),
+        subtitle: Text(item.getSubTitle()),
+        trailing: onDelete == null
+            ? null
+            : IconButton(
+                icon: const Icon(Icons.delete, color: Colors.red),
+                onPressed: () async => onDelete!(),
+              ),
       ),
     );
   }
