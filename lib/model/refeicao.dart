@@ -12,10 +12,10 @@ class Refeicao extends ListItem {
 
   Refeicao(this.id, this.nome, this.horarioRefeicao);
 
-  String printHorarioEAlimentos() {
+  String getInformacoesRefeicao() {
     final f = DateFormat('dd-MM-yyyy - HH:mm');
     String valorParaPrint = "";
-    valorParaPrint = f.format(horarioRefeicao).toString();
+    valorParaPrint = "${f.format(horarioRefeicao)} | Calorias: ${totalCalorias()} | Proteínas: ${totalProteinas()}";
     for (Alimento alimento in alimentos) {
       valorParaPrint += "\n${alimento.toString()}";
     }
@@ -42,7 +42,7 @@ class Refeicao extends ListItem {
 
   @override
   String getSubTitle() {
-    return printHorarioEAlimentos();
+    return getInformacoesRefeicao();
   }
 
   @override

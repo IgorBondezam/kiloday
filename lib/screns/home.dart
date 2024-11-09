@@ -9,7 +9,6 @@ import 'package:kiloday/service/refeicao_service.dart';
 import 'package:kiloday/service/user_service.dart';
 import 'package:http/http.dart' as http;
 
-
 class Home extends StatefulWidget {
   Home({super.key, required this.user});
 
@@ -48,8 +47,6 @@ class _HomeState extends State<Home> {
   }
 
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   void _onItemTapped(int index) {
     setState(() {
@@ -72,6 +69,54 @@ class _HomeState extends State<Home> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Card(
+                        color: const Color(0xFFFFF9C4),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: const BorderSide(
+                            color: Color(0xFFFBC02D),
+                            width: 2.0,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            'Calorias: ${widget.user.getTotalCaloriasByRefeicoes()}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Card(
+                        color: const Color(0xFFFFCDD2),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: const BorderSide(
+                            color: Color(0xFFD32F2F),
+                            width: 2.0,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            'Proteínas: ${widget.user.getTotalProteinasByRefeicoes()}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   ExpandedListagemTitleSubtitle(
                     listagem: widget.user.refeicoes,
                   ),

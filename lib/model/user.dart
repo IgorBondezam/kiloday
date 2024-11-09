@@ -32,4 +32,18 @@ class User {
     data['refeicoes'] = this.refeicoes.map((r) => r.toJson()).toList();
     return data;
   }
+
+  double getTotalCaloriasByRefeicoes() {
+    double soma = refeicoes.map((r) => r.totalCalorias()).reduce((sum, element){
+      return sum + element;
+    });
+    return soma;
+  }
+
+  double getTotalProteinasByRefeicoes() {
+    double soma = refeicoes.map((r) => r.totalProteinas()).reduce((sum, element){
+      return sum + element;
+    });
+    return soma;
+  }
 }

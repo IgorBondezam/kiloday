@@ -11,14 +11,14 @@ class Alimento implements DropdownListItem {
 
   @override
   String toString() {
-    return 'Nome: $nome, Calorias: $calorias, Proteínas: $proteinas e quantidade: $quantidade';
+    return 'Alimento: $nome, Calorias: $calorias Kcal , Proteínas: $proteinas gramas  e quantidade: $quantidade gramas';
   }
 
   @override
   String getSubTitle() {
     return
-        '    Calorias: ${calorias}\n'
-        '    Proteínas: ${proteinas}\n'
+        '    Calorias: ${calorias} Kcal\n '
+        '    Proteínas: ${proteinas} gramas\n '
         '    Quantidade: ${quantidade} gramas';
   }
 

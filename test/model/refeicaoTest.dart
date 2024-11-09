@@ -14,7 +14,7 @@ void main() {
     refeicao.alimentos.add(picanha);
     refeicao.alimentos.add(macarrao);
 
-    expect(refeicao.printHorarioEAlimentos(),
+    expect(refeicao.getInformacoesRefeicao(),
       '01-01-2024 - 19:00\nNome: Picanha, Calorias: 800.5, Proteínas: 54.68 e quantidade: 300.0\nNome: Macarrao, Calorias: 1500.5, Proteínas: 123.68 e quantidade: 500.0'
     );
   });
