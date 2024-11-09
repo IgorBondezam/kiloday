@@ -1,7 +1,7 @@
 import 'package:kiloday/model/interfaces/dropdown_list_item.dart';
 
 class Alimento implements DropdownListItem {
-  int id;
+  String id;
   String nome;
   double calorias;
   double proteinas;
@@ -11,14 +11,13 @@ class Alimento implements DropdownListItem {
 
   @override
   String toString() {
-    return 'Alimento: $nome, Calorias: $calorias Kcal , Proteínas: $proteinas gramas  e quantidade: $quantidade gramas';
+    return 'Alimento: $nome, Calorias: $calorias Kcal, Proteínas: $proteinas gramas e quantidade: $quantidade gramas';
   }
 
   @override
   String getSubTitle() {
-    return
-        '    Calorias: ${calorias} Kcal\n '
-        '    Proteínas: ${proteinas} gramas\n '
+    return '    Calorias: ${calorias} Kcal\n'
+        '    Proteínas: ${proteinas} gramas\n'
         '    Quantidade: ${quantidade} gramas';
   }
 
@@ -29,16 +28,15 @@ class Alimento implements DropdownListItem {
 
   @override
   String textoDropdown() {
-    return nome;
+    return "$nome - $quantidade gramas";
   }
 
   factory Alimento.decodeToClass(Map<String, dynamic> map) {
-    return Alimento(int.parse(map['id']), map['nome'], map['calorias'],
-        map['proteinas'], map['quantidade']);
+    return Alimento(map['id'], map['nome'], map['calorias'], map['proteinas'],
+        map['quantidade']);
   }
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'id': id.toString(),
         'nome': nome,
         'calorias': calorias,

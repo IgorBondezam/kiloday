@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           centerTitle: true,
           color: MyApp.green,
-          titleTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 30),
+          titleTextStyle: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.w700, fontSize: 30),
         ),
       ),
       home: Login(),

@@ -1,7 +1,7 @@
 import 'package:kiloday/model/refeicao.dart';
 
 class User {
-  int id;
+  String id;
   String email;
   String password;
 
@@ -14,7 +14,7 @@ class User {
   }
 
   factory User.decodeToClass(Map<String, dynamic> json) {
-    User user = User(int.parse(json['id']), json['email'], json['password']);
+    User user = User(json['id'], json['email'], json['password']);
 
     if (json['refeicoes'] != null) {
       json['refeicoes'].forEach((r) {
@@ -34,14 +34,16 @@ class User {
   }
 
   double getTotalCaloriasByRefeicoes() {
-    double soma = refeicoes.map((r) => r.totalCalorias()).reduce((sum, element){
+    double soma =
+        refeicoes.map((r) => r.totalCalorias()).reduce((sum, element) {
       return sum + element;
     });
     return soma;
   }
 
   double getTotalProteinasByRefeicoes() {
-    double soma = refeicoes.map((r) => r.totalProteinas()).reduce((sum, element){
+    double soma =
+        refeicoes.map((r) => r.totalProteinas()).reduce((sum, element) {
       return sum + element;
     });
     return soma;

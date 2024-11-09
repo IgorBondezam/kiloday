@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kiloday/main.dart';
 import 'package:kiloday/model/user.dart';
 import 'package:kiloday/screns/home.dart';
+import 'package:kiloday/service/user_service.dart';
+import 'package:http/http.dart' as http;
+
 
 class Login extends StatefulWidget {
   Login({super.key});
@@ -14,6 +17,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  UserService service = UserService(http.Client());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,16 +60,15 @@ class _LoginState extends State<Login> {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
-            onPressed: () {
-              User user = User(1,
-                  widget.loginController.text, widget.passwordController.text);
+            onPressed: () async {
+              User user = User("1", widget.loginController.text,
+                  widget.passwordController.text);
               if (user.loginValid()) {
+                await service.createIfNotExist(user);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Home(
-                      user: user,
-                    ),
+                    builder: (context) => Home(user: user,),
                   ),
                 );
               }

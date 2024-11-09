@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:kiloday/components/expanded_listagem_title_subtitle.dart';
 import 'package:kiloday/main.dart';
 import 'package:kiloday/model/alimento.dart';
 import 'package:kiloday/service/alimento_service.dart';
-import 'package:http/http.dart' as http;
+import 'package:kiloday/utils/create_object_utils.dart';
 
 class CrudAlimento extends StatefulWidget {
-  CrudAlimento(this.alimentos, {super.key});
-
+  CrudAlimento({super.key});
 
   TextEditingController nomeController = TextEditingController();
   TextEditingController caloriasController = TextEditingController();
@@ -88,13 +87,20 @@ class _CrudAlimentoState extends State<CrudAlimento> {
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: MyApp.green),
           onPressed: () {
-            setState(() {
-              Alimento alimento = Alimento(1,
-                  widget.nomeController.text, double.parse(widget.caloriasController.text),
-                  double.parse(widget.proteinasController.text), double.parse(widget.quantidadeController.text));
-              service.save(alimento.toJson());
-              getAlimentos();
-            });
+            if (!(widget.nomeController.text != '' &&
+                widget.caloriasController.text != '' &&
+                widget.proteinasController.text != '' &&
+                widget.quantidadeController.text != '')) {
+              return;
+            }
+            Alimento alimento = Alimento(
+                CreateObjectUtils.createIdRandom().toString(),
+                widget.nomeController.text,
+                double.parse(widget.caloriasController.text),
+                double.parse(widget.proteinasController.text),
+                double.parse(widget.quantidadeController.text));
+            service.save(alimento.toJson());
+            getAlimentos();
           },
           child: const Text(
             'Adicionar',

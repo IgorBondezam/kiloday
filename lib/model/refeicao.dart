@@ -4,8 +4,7 @@ import 'package:kiloday/model/alimento.dart';
 import 'interfaces/list_item.dart';
 
 class Refeicao extends ListItem {
-
-  int id;
+  String id;
   String nome;
   DateTime horarioRefeicao;
   List<Alimento> alimentos = [];
@@ -15,26 +14,27 @@ class Refeicao extends ListItem {
   String getInformacoesRefeicao() {
     final f = DateFormat('dd-MM-yyyy - HH:mm');
     String valorParaPrint = "";
-    valorParaPrint = "${f.format(horarioRefeicao)} | Calorias: ${totalCalorias()} | Proteínas: ${totalProteinas()}";
+    valorParaPrint =
+        "${f.format(horarioRefeicao)} | Calorias: ${totalCalorias()} | Proteínas: ${totalProteinas()}";
     for (Alimento alimento in alimentos) {
       valorParaPrint += "\n${alimento.toString()}";
     }
     return valorParaPrint;
   }
 
-  void adicionarAlimento(Alimento alimento)  {
+  void adicionarAlimento(Alimento alimento) {
     alimentos.add(alimento);
   }
 
   double totalCalorias() {
-    double soma = alimentos.map((a) => a.calorias).reduce((sum, element){
+    double soma = alimentos.map((a) => a.calorias).reduce((sum, element) {
       return sum + element;
     });
     return soma;
   }
 
   double totalProteinas() {
-    double soma = alimentos.map((a) => a.proteinas).reduce((sum, element){
+    double soma = alimentos.map((a) => a.proteinas).reduce((sum, element) {
       return sum + element;
     });
     return soma;
@@ -51,7 +51,8 @@ class Refeicao extends ListItem {
   }
 
   factory Refeicao.decodeToClass(Map<String, dynamic> json) {
-    Refeicao refeicao = Refeicao(int.parse(json['id']), json['nome'], DateTime.parse(json['horarioRefeicao']));
+    Refeicao refeicao = Refeicao(
+        json['id'], json['nome'], DateTime.parse(json['horarioRefeicao']));
 
     if (json['alimentos'] != null) {
       json['alimentos'].forEach((a) {
@@ -63,11 +64,10 @@ class Refeicao extends ListItem {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = this.id;
-    data['nome'] = this.nome;
-    data['horarioRefeicao'] = horarioRefeicao;
+    data['id'] = id;
+    data['nome'] = nome;
+    data['horarioRefeicao'] = horarioRefeicao.toIso8601String();
     data['alimentos'] = alimentos.map((v) => v.toJson()).toList();
     return data;
   }
-
 }

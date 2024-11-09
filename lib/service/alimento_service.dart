@@ -1,10 +1,8 @@
 import 'package:kiloday/model/alimento.dart';
 import 'package:kiloday/service/abstract_crud_service.dart';
 
-
 class AlimentoService extends AbstractCrudService<Alimento> {
-
-   AlimentoService(super.client);
+  AlimentoService(super.client);
 
   @override
   String getComplemento() {
@@ -15,5 +13,4 @@ class AlimentoService extends AbstractCrudService<Alimento> {
   Alimento getInstance(Map<String, dynamic> item) {
     return Alimento.decodeToClass(item);
   }
-
 }

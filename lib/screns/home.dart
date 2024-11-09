@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:kiloday/components/expanded_listagem_title_subtitle.dart';
 import 'package:kiloday/main.dart';
-import 'package:kiloday/model/alimento.dart';
 import 'package:kiloday/model/user.dart';
 import 'package:kiloday/screns/crud_alimento.dart';
 import 'package:kiloday/screns/crud_refeicao.dart';
 import 'package:kiloday/service/refeicao_service.dart';
 import 'package:kiloday/service/user_service.dart';
-import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   Home({super.key, required this.user});
@@ -16,8 +15,6 @@ class Home extends StatefulWidget {
 
   @override
   State<Home> createState() => _HomeState();
-
-  List<Alimento> alimentos = [];
 }
 
 class _HomeState extends State<Home> {
@@ -39,7 +36,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> getUser() async {
-    widget.user = await userService.findById(1);
+    widget.user = (await userService.findById("1"))!;
   }
 
   Future<void> getRefeicao() async {
@@ -123,8 +120,8 @@ class _HomeState extends State<Home> {
                 ],
               ),
       ),
-      CrudRefeicao(widget.alimentos, widget.user.refeicoes),
-      CrudAlimento(widget.alimentos),
+      CrudRefeicao(widget.user),
+      CrudAlimento(),
     ];
 
     return Scaffold(
